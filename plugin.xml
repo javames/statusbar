@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-statusbar" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<name>StatusBar</name>
+<js-module name="StatusBar" src="www/statusbar.js">
+<clobbers target="cordova.plugins.StatusBar" />
+</js-module>
+<platform name="android">
+<config-file parent="/*" target="res/xml/config.xml">
+<feature name="StatusBar">
+<param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+</feature>
+</config-file><config-file parent="/*" target="AndroidManifest.xml" />
+<source-file src="src/android/StatusBar.java" target-dir="src/org/apache/cordova/statusbar/" />
+</platform>
+<platform name="ios"><config-file parent="/*" target="config.xml">
+<feature name="statusbar">
+<param name="ios-package" value="statusbar" />
+</feature>
+</config-file>
+<source-file src="src/ios/statusbar.m" />
+</platform>
+</plugin>

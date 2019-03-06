@@ -1,0 +1,22 @@
+{
+  "name": "cordova-plugin-statusbar",
+  "version": "0.0.1",
+  "description": "change the status of bar",
+  "cordova": {
+    "id": "cordova-plugin-statusbar",
+    "platforms": []
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javames/statusbar.git"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "javames",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javames/statusbar/issues"
+  },
+  "homepage": "https://github.com/javames/statusbar#readme"
+}
