@@ -1,6 +1,6 @@
 {
-  "name": "cordova-plugin-statusbar",
-  "version": "0.0.1",
+  "name": "cordova-plugin-fullscreen",
+  "version": "0.0.3",
   "description": "change the status of bar",
   "cordova": {
     "id": "cordova-plugin-statusbar",
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/javames/statusbar/issues"
   },
-  "homepage": "https://github.com/javames/statusbar#readme"
+  "homepage": "https://github.com/javames/statusbar#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

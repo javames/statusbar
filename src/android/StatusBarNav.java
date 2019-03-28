@@ -1,19 +1,18 @@
-package org.apache.cordova.statusbar;
+package org.apache.cordova.statusbarnav;
 
 import android.app.Activity;
+import android.os.Build;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
-import org.json.JSONException;
 
-public class StatusBar extends CordovaPlugin {
+public class StatusBarNav extends CordovaPlugin {
 
-    private static final String HIDESTATUSBAR="hideStatusBar";
-    private static final String SHOWSTATUSBAR="showStatusBar";
+    private static final String HIDESTATUSBAR="hideStatusNavBar";
+    private static final String SHOWSTATUSBAR="showStatusNavBar";
     private static final String TAG="StatusBar";
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext){
@@ -42,10 +41,17 @@ public class StatusBar extends CordovaPlugin {
     private void hideStatusBar(CallbackContext callbackContext,Window window) {
         Log.i(TAG,"hideStatusBar");
         try{
-            WindowManager.LayoutParams params = window.getAttributes();
-            params.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
-            window.setAttributes(params);
-            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
+                View view = window.getDecorView();
+                view.setSystemUiVisibility(View.GONE);
+            } else if (Build.VERSION.SDK_INT >= 19) {
+                //for new api versions.
+                View decorView = window.getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN;
+                decorView.setSystemUiVisibility(uiOptions);
+
+            }
             if(callbackContext!=null){
                 callbackContext.success();
             }
@@ -61,10 +67,17 @@ public class StatusBar extends CordovaPlugin {
     private void ShowStatusBar(CallbackContext callbackContext,Window window){
         Log.i(TAG,"ShowStatusBar");
         try{
-            WindowManager.LayoutParams params = window.getAttributes();
-            params.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            window.setAttributes(params);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
+                View view = window.getDecorView();
+                view.setSystemUiVisibility(View.VISIBLE);
+            } else if (Build.VERSION.SDK_INT >= 19) {
+                //for new api versions.
+                View decorView = window.getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY ;
+                decorView.setSystemUiVisibility(uiOptions);
+
+            }
             if(callbackContext!=null){
                 callbackContext.success();
             }

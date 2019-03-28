@@ -1,9 +1,9 @@
 var exec = require('cordova/exec');
 
-exports.hideStatusBar = function (success,error) {
-    exec(success, error,'StatusBar', 'hideStatusBar', []);
+exports.hideStatusNavBar = function (success,error) {
+    exec(success, error,'StatusBarNav', 'hideStatusNavBar', []);
 };
 
-exports.showStatusBar = function (success,error) {
-    exec(success, error,'StatusBar', 'showStatusBar', []);
+exports.showStatusNavBar = function (success,error) {
+    exec(success, error,'StatusBarNav', 'showStatusNavBar', []);
 };
