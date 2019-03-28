@@ -1,4 +1,10 @@
+
 状态栏插件
+
+set fullscreen,both stausbar and navigation.
+
+Using the Cordova CLI to fetch the latest version from GitHub:
+cordova plugin add https://github.com/javames/statusbar.git
 
 用于设置状态栏虚拟键全屏与否
 
@@ -15,3 +21,6 @@
    },function (error) {
    console.log("恢复状态失败"+error)
    })
+
+
+
